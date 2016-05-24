@@ -4,7 +4,61 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="jumbotron">
+    <h1>To Do List</h1>
+    <p class="lead">Here is your list of tasks to do. You are able to: add new tasks, edit existing tasks, mark them as complete, or delete them if you no longer need them.</p>
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Task Name</th>
+            <th>Due Date</th>
+            <th />
+            <th />
+            <th />
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DueDate)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id=item.Id })" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-pencil" />
+                        <span>Edit</span>
+                    </a> 
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", new { id=item.Id})" class="btn btn-info">
+                        <span class="glyphicon glyphicon-th-list" />
+                        <span>Details</span>
+                    </a>
+                </td>
+                <td>
+                    <a href="@Url.Action("Delete", new {id=item.Id})" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-trash" />
+                        <span>Delete</span>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@*<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -54,4 +108,4 @@
     </tr>
 }
 
-</table>
+</table>*@
